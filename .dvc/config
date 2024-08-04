@@ -1,0 +1,4 @@
+[core]
+    remote = dvcstore
+['remote "dvcstore"']
+    url = https://ap-southeast-2.console.aws.amazon.com/s3/buckets/anksplakshadvcbucket?region=ap-southeast-2
