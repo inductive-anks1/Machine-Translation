@@ -1,0 +1,52 @@
+schema: '2.0'
+stages:
+  build-features:
+    cmd: python src/features/build_features.py
+    deps:
+    - path: data/raw/test-00000-of-00001.parquet
+      hash: md5
+      md5: 9656664d11e0f88c046f78ddaf1f76ce
+      size: 55816
+    - path: data/raw/train-00000-of-00001.parquet
+      hash: md5
+      md5: 5c5983d245a26bf24361a0f2d4b620f7
+      size: 529641
+    - path: data/raw/validation-00000-of-00001.parquet
+      hash: md5
+      md5: ef0858f9a334467c97503f034968d5fa
+      size: 102335
+    - path: src/features/build_features.py
+      hash: md5
+      md5: db28302aa5bbb58fcf3921f31d81002b
+      size: 1732
+    outs:
+    - path: data/processed/
+      hash: md5
+      md5: e1aba5effdb28811e91d1f9242dac922.dir
+      size: 895848
+      nfiles: 3
+  train-model:
+    cmd: python src/models/train_model.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: efa15f23e6a94194c25ad48cb5086c78
+      size: 74233
+    - path: data/processed/train.csv
+      hash: md5
+      md5: b3e409b791988ff8b0f02e2625b18eb2
+      size: 692199
+    - path: data/processed/validate.csv
+      hash: md5
+      md5: eeed19915e705024de61c1c9d6a7c6a1
+      size: 129416
+    - path: src/models/train_model.py
+      hash: md5
+      md5: 7a3bd740b13822ad6f99eb8e38c35bf9
+      size: 4185
+    outs:
+    - path: models/
+      hash: md5
+      md5: f2fb18cac821c0fe33e1c1efbdcd21fa.dir
+      size: 1037962819
+      nfiles: 2
